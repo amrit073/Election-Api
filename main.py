@@ -1,11 +1,13 @@
 import json
 from flask import Flask, request, render_template
 from scraper import kantipur_election
+from flask_cors import CORS
 
 app = Flask(__name__)  # notice that the app instance is called `app`, this is very important.
 with open('data.json', 'r') as rf:
     data = json.load(rf)
     cities = data.keys()
+CORS(app)
 
 @app.route("/")
 def home():
